@@ -1,0 +1,18 @@
+<div id="instructions">
+    <h2 *ngIf="userSer.userDetails.PrivateName&&userSer.userDetails.LastName">Hello {{userSer.userDetails.PrivateName}} {{userSer.userDetails.LastName}} </h2>
+    <h2 *ngIf="!(userSer.userDetails.PrivateName&&userSer.userDetails.LastName)">Hello </h2>
+    <h1>How to fill out the form? </h1>
+    <h3>In order to sing up You have to fill out the form,<br /> Below are the instructions for filling out the form:
+    </h3>
+    <p><b>First name:</b> enter a text of your first name, only letters.</p>
+    <p><b>Last name:</b> enter a text of your last name, only letters.</p>
+    <p><b>User Id:</b> enter a text of your ID, A string of 9 characters long with only numbers.</p>
+    <p><b>Children:</b> enter number of children,for each child enter valid ID,name,date of birth.</p>
+    <p><b>Date of birth:</b> enter your date of birth, in format: dd/mm/yy.</p>
+    <p><b>Gender:</b> enter your gender, male/female</p>
+    <p><b>HMO:</b> enter the health insurance fund you are a member of.</p>
+    <h3>Success :)</h3>
+</div>
+<footer>
+    <p>© All Rights Reserved</p>
+  </footer>

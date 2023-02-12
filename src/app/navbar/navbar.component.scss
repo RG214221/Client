@@ -1,0 +1,22 @@
+nav{
+    display: flex;
+    text-align: center;
+    height:7%;
+    a{
+        border:0.5px solid black;
+         }
+    *{
+        
+        width: 100%;
+        height: 70%;
+        background-color: turquoise;
+        flex-grow:1;
+        text-decoration: none;
+        color: black;
+        padding-top:1%;
+    }
+    a:hover{
+        opacity: 50%;
+    }
+    
+}

@@ -1,0 +1,68 @@
+form{
+    width:30%;
+    margin-top:5%;
+    margin-left:35%; 
+    h2{
+        border-bottom: solid 1px turquoise;
+    }
+    table{
+        margin-bottom: 10%;
+       margin-left:8%;
+        width: 85%;
+        *{
+            width: 100%;
+        }
+        tr{
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            td{
+                margin:1%;
+                flex-grow: 1;
+            }
+        
+        }
+       
+      }
+    }
+   
+    #sub
+    {
+        border:none;
+        font-family: Ink free;
+        margin:1%;
+        padding:4%;
+        width: 105%;
+        margin-top: 3%;
+        font-size: 100%;
+        font-weight: bold;
+    }
+    #sub:hover{
+        outline:none;
+        background-color: lightgrey;
+    }
+   #ex{
+       border-color: turquoise;
+       float: right;
+    font-family: Ink free;
+    margin:1%;
+    padding:1%;
+    width: 10%;
+    margin-top: 1%;
+    font-size: 100%;
+    font-weight: bold;
+   }
+   footer{
+       margin-top:5%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    text-align: center;
+    width: 100%;
+    height: 6vh;
+    background-color:#f1f1f1;;
+    margin-bottom: 0;
+}
+#excel-table
+{
+    display: none;
+}
