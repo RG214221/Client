@@ -6,6 +6,7 @@ import User from '../models/User';
   providedIn: 'root'
 })
 export class UserService {
+  numOfChildren;
   childrenValid=true;
   private constructor(public http: HttpClient) { }
   baseRouteUrl = `${environment.baseUrl}/User`;
