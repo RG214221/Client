@@ -1,5 +1,5 @@
 
-<form (ngSubmit)="onSubmit()" id="form" #myForm>
+<form (ngSubmit)="onSubmit()" id="form">
   <h1>Sign In</h1>
   <h2>Personal Information</h2>
   <table cellspacing="0">
@@ -17,7 +17,7 @@
         </mat-form-field>
       </td>
       <td>
-        <mat-form-field class="example-full-width">
+        <mat-form-field>
           <mat-label>Last name</mat-label>
           <input matInput [formControl]="lnameFormControl" [(ngModel)]="userSer.userDetails.LastName">
           <mat-error *ngIf="lnameFormControl.hasError('pattern') &&!lnameFormControl.hasError('required')">
@@ -84,7 +84,7 @@
         </mat-form-field>
       </td>
     </tr>
-    <tr id="full">
+    <tr>
       <td>
         <mat-form-field>
           <mat-label>Num of children</mat-label>
