@@ -37,6 +37,9 @@
           <mat-error *ngIf="idFormControl.hasError('pattern')&&!idFormControl.hasError('required')">
             Please enter a valid ID
           </mat-error>
+          <mat-error *ngIf="(idFormControl.hasError('maxLength')||idFormControl.hasError('minLength'))&&!idFormControl.hasError('required')">
+            ID must include 9 digits
+          </mat-error>
           <mat-error *ngIf="idFormControl.hasError('required')">
             ID is <strong>required</strong>
           </mat-error>
@@ -88,6 +91,9 @@
           <input [formControl]="numFormControl" type="number" [(ngModel)]="numChildren" matInput (change)="updateChildrenArr($event)">
           <mat-error *ngIf="numFormControl.hasError('required')">
             Number of children is <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="numFormControl.hasError('min')&&!numFormControl.hasError('required')">
+            Please enter valid number.
           </mat-error>
         </mat-form-field>
       </td>
