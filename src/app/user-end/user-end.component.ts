@@ -10,29 +10,27 @@ import { Route, Router } from '@angular/router';
   styleUrls: ['./user-end.component.scss']
 })
 export class UserEndComponent {
-  constructor(public userSer:UserService,public router:Router){}
+  constructor(public userSer: UserService, public router: Router) { }
   fileName = 'User Details.xlsx';
 
   exportToExcel(): void {
-    let element = [this.userSer.userDetails,this.userSer.userDetails.Children];
+    let element = [this.userSer.userDetails, this.userSer.userDetails.Children];
     const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet(element);
     /* generate workbook and add the worksheet */
     const wb: XLSX.WorkBook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, 'sheet 1');
-  
+
     /* save to file */
     XLSX.writeFile(wb, this.fileName);
   }
-  
-  homePage()
-  {
+
+  homePage() {
     this.router.navigate(['home']);
   }
-  newUser()
-  {
+  newUser() {
     this.userSer.userDetails = new User(null, null, null, [], null, null, null);
-    this.userSer.childrenValid.next(true);
+    this.userSer.childrenValid = true;
     this.router.navigate(['detailsForm']);
   }
-  
+
 }
