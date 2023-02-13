@@ -30,6 +30,7 @@ export class UserEndComponent {
   newUser() {
     this.userSer.userDetails = new User(null, null, null, [], null, null, null);
     this.userSer.childrenValid = true;
+      this.userSer=null;
     this.router.navigate(['detailsForm']);
   }
 
