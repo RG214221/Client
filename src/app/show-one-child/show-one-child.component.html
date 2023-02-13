@@ -18,7 +18,7 @@
             </mat-form-field>
           </td>
           <td>
-            <mat-form-field class="example-full-width">
+            <mat-form-field>
               <mat-label>ID number </mat-label>
               <input (blur)="blur($event,'id')"  matInput [formControl]="idFormControl"  [(ngModel)]="userSer.userDetails.Children[index].ChildIDNumber">
               <mat-error *ngIf="idFormControl.hasError('pattern') &&!idFormControl.hasError('required')">
