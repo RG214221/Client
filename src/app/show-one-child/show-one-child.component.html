@@ -5,24 +5,30 @@
           <td>
             <mat-form-field>
               <mat-label>First name</mat-label>
-              <input (blur)="blur()" matInput [formControl]="fnameFormControl" [(ngModel)]="userSer.userDetails.Children[index].ChildName">
+              <input (blur)="blur($event,'name')" matInput [formControl]="fnameFormControl" [(ngModel)]="userSer.userDetails.Children[index].ChildName">
               <mat-error *ngIf="fnameFormControl.hasError('pattern') &&!fnameFormControl.hasError('required')">
                 Please enter a valid name
               </mat-error>
               <mat-error *ngIf="fnameFormControl.hasError('required')">
                 FirstName is <strong>required</strong>
               </mat-error>
+              <mat-error *ngIf="nameExists">
+                You have already entered a child with this name.
+              </mat-error>
             </mat-form-field>
           </td>
           <td>
             <mat-form-field class="example-full-width">
               <mat-label>ID number </mat-label>
-              <input (blur)="blur()"  matInput [formControl]="idFormControl"  [(ngModel)]="userSer.userDetails.Children[index].ChildIDNumber">
+              <input (blur)="blur($event,'id')"  matInput [formControl]="idFormControl"  [(ngModel)]="userSer.userDetails.Children[index].ChildIDNumber">
               <mat-error *ngIf="idFormControl.hasError('pattern') &&!idFormControl.hasError('required')">
                 Please enter a valid ID
               </mat-error>
               <mat-error *ngIf="idFormControl.hasError('required')">
                 ID is <strong>required</strong>
+              </mat-error>
+              <mat-error *ngIf=" idExists">
+                You have already entered a child with this id.
               </mat-error>
             </mat-form-field>
           </td>
@@ -31,7 +37,7 @@
           <td>
             <mat-form-field>
               <mat-label>Date of birth </mat-label>
-              <input  (blur)="blur()"type="date" matInput [formControl]="dateFormControl" [(ngModel)]="userSer.userDetails.Children[index].DOB">
+              <input  (blur)="blur($event,'dob')"type="date" matInput [formControl]="dateFormControl" [(ngModel)]="userSer.userDetails.Children[index].DOB">
               <mat-error *ngIf="dateFormControl.hasError('required')">
                 Date of birth is <strong>required</strong>
               </mat-error>
