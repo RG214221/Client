@@ -27,6 +27,7 @@ export class DetailsFormComponent implements OnInit {
   valid() {
     //if there are children and they are not valid.
     this.childrenValidations = this.userSer.childrenValid;
+    //there are not children at all
         if (this.userSer.numOfChildren == 0)
         this.childrenValidations=true;
     if (
