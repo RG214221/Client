@@ -26,9 +26,9 @@ export class ShowOneChildComponent implements OnInit {
   }
   blur(e, input) {
     if (input == "id")
-      this.idExists = this.userSer.userDetails.Children.find((c, i) => c.ChildIDNumber == e.target.value && i != this.index) != null ? true : false;
+      this.idExists = this.userSer.userDetails.Children.find((c, i) => c.ChildIDNumber == e.target.value && i != this.index) != undefined ? true : false;
     if (input == "name")
-      this.nameExists = this.userSer.userDetails.Children.find((c, i) => c.ChildName == e.target.value && i != this.index) != null ? true : false;
+      this.nameExists = this.userSer.userDetails.Children.find((c, i) => c.ChildName == e.target.value && i != this.index) != undefined ? true : false;
     this.userSer.childrenValid = this.valid();
   }
 
