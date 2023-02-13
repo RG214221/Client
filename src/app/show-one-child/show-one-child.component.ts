@@ -1,6 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { UserService } from '../services/user.service';
-import Child from '../models/Child';
 import { FormControl, Validators } from '@angular/forms';
 
 @Component({
@@ -9,8 +8,8 @@ import { FormControl, Validators } from '@angular/forms';
   styleUrls: ['./show-one-child.component.scss']
 })
 export class ShowOneChildComponent implements OnInit {
-  nameExist:false;
-  idExist:false;
+  nameExists = false;
+  idExists = false;
   constructor(public userSer: UserService) { }
   fnameFormControl = new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z]+$')]);
   idFormControl = new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$'), Validators.maxLength(9), Validators.minLength(9)]);
@@ -21,10 +20,16 @@ export class ShowOneChildComponent implements OnInit {
   @Input()
   index: number;
   valid() {
-    return this.fnameFormControl.valid && this.idFormControl.valid && this.dateFormControl ? true : false;
+    return this.fnameFormControl.valid && this.idFormControl.valid && this.dateFormControl
+      && !this.idExists && !this.nameExists
+      ? true : false;
   }
-  blur() {
-    this.userSer.childrenValid.next(this.valid());
+  blur(e, input) {
+    if (input == "id")
+      this.idExists = this.userSer.userDetails.Children.find((c, i) => c.ChildIDNumber == e.target.value && i != this.index) != null ? true : false;
+    if (input == "name")
+      this.nameExists = this.userSer.userDetails.Children.find((c, i) => c.ChildName == e.target.value && i != this.index) != null ? true : false;
+    this.userSer.childrenValid = this.valid();
   }
 
 }
