@@ -88,7 +88,7 @@
       <td>
         <mat-form-field>
           <mat-label>Num of children</mat-label>
-          <input [formControl]="numFormControl" type="number" [(ngModel)]="numChildren" matInput (change)="updateChildrenArr($event)">
+          <input [formControl]="numFormControl" type="number" [(ngModel)]="userSer.numOfChildren" matInput (change)="updateChildrenArr($event)">
           <mat-error *ngIf="numFormControl.hasError('required')">
             Number of children is <strong>required</strong>
           </mat-error>
