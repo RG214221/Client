@@ -11,7 +11,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./details-form.component.scss']
 })
 export class DetailsFormComponent implements OnInit {
-  numChildren: number;
   //as soon as there arent children.
   childrenValidations: boolean = true;
   fnameFormControl = new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z]+$')]);
