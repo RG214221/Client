@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
 import Child from '../models/Child';
-import User from '../models/User';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -13,6 +12,7 @@ import { Router } from '@angular/router';
 })
 export class DetailsFormComponent implements OnInit {
   numChildren: number;
+  //as soon as there arent children.
   childrenValidations: boolean = true;
   fnameFormControl = new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z]+$')]);
   lnameFormControl = new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z]+$')]);
@@ -26,10 +26,12 @@ export class DetailsFormComponent implements OnInit {
 
   }
   valid() {
+    //if there are children and they are not valid.
     if (this.childrenValidations == false)
-      this.userSer.childrenValid.subscribe(data => { this.childrenValidations = data })
+      this.childrenValidations = this.userSer.childrenValid;
     if (
       this.childrenValidations &&
+      //if there is any children that I didnt touch at all (not valid).
       this.userSer.userDetails.Children.every(e => e.ChildName != null) &&
       this.fnameFormControl.valid &&
       this.lnameFormControl.valid &&
@@ -44,7 +46,8 @@ export class DetailsFormComponent implements OnInit {
 
   updateChildrenArr(e) {
     if (e.target.value > 0)
-      this.userSer.childrenValid.next(false);
+      //there are children, as soon as I dont touch them,they arent valid,so there is at least one not valid child
+      this.userSer.childrenValid = false;
     else
       this.childrenValidations = true;
     this.userSer.userDetails.Children = [];
@@ -66,10 +69,3 @@ export class DetailsFormComponent implements OnInit {
       (err) => { console.log(err); alert("There was some problem with fetching the data") });
   }
 }
-
-
-
-
-
-
-
